@@ -21,14 +21,12 @@ pre {
 
 a {
   color: #000;
-
-  &:visited {
-    color: #666;
-  }
+  border: 2px solid red;
+  border-radius: 3px;
+  background-color: #c0aaff;
 
   &:hover {
-    color: #fff;
-    background-color: #000;
+    border-radius: 50%;
   }
 }
 
@@ -81,4 +79,16 @@ div {
 
 label {
   display: block;
+}
+
+
+button, input[type="submit"], button {
+  color: #000;
+  border: 2px solid red;
+  border-radius: 3px;
+  background-color: #c0aaff;
+
+  &:hover {
+    border-radius: 50%;
+  }
 }
