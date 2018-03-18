@@ -1,0 +1,19 @@
+<h1>New User</h1>
+
+<ul>
+  <% for message in @user.errors.full_messages %>
+  <font color="red"><li><%= message %></li></font>
+  <% end %>
+</ul>
+
+<%= form_for(@user) do |form| %>
+  <p>
+    <%= form.label(:username) %><br>
+    <%= form.text_field(:username) %><br>
+  </p>
+  <p>
+    <%= form.label(:password) %><br>
+    <%= form.password_field(:password) %><br>
+  </p>
+  <%= form.submit("Sign Up") %>
+<% end %>

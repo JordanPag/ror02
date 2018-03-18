@@ -1,0 +1,14 @@
+<h1>New Item</h1>
+
+<%= render 'form', item: @item %>
+<p>
+  For category, you have to type in its ID instead of its name. A list of the available categories and their IDs is below.
+  <br>
+  <table>
+    <tr><th>Category</th><th>ID</th></tr>
+    <% @categories.each do |category| %>
+      <tr><td><%= category.name %></td><td><%= category.id %></td></tr>
+    <% end %>
+  </table>
+</p>
+<%= link_to 'Back', items_path %>
