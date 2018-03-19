@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FightingGame</title>
+    <title>Fighting Game</title>
+    <link rel="icon" href="https://images.sftcdn.net/images/t_optimized,f_auto/p/5a93b3ee-96d7-11e6-8fdd-00163ed833e7/728637478/zelda-adventure-for-minecraft-logo.png" type="image/png">
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div style="text-align:right;">
+      <% if current_user %>
+        Signed in as <strong><%= current_user.name %></strong>
+        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+      <% else %>
+        <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+      <% end %>
+    </div>
+    <div>
+      <% if current_user %>
+        <%= yield %>
+      <% else %>
+        <h3>Please sign in to use the game.</h3>
+      <% end %>
+    </div>
   </body>
 </html>
