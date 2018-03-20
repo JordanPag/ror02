@@ -19,17 +19,6 @@ pre {
   font-size: 11px;
 }
 
-a {
-  color: #000;
-  border: 2px solid red;
-  border-radius: 3px;
-  background-color: #c0aaff;
-
-  &:hover {
-    border-radius: 50%;
-  }
-}
-
 th {
   padding-bottom: 5px;
 }
@@ -82,7 +71,7 @@ label {
 }
 
 
-button, input[type="submit"], button {
+button, input[type="submit"], a {
   color: #000;
   border: 2px solid red;
   border-radius: 3px;
@@ -91,4 +80,9 @@ button, input[type="submit"], button {
   &:hover {
     border-radius: 50%;
   }
+}
+
+a#sign_in {
+  border: none;
+  background-color: transparent;
 }
