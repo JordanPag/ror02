@@ -9,5 +9,5 @@ class User < ApplicationRecord
       user.save!
     end
   end
-  has_many :heroes
+  has_many :heros #rails spelled it this way so I have to use it
 end

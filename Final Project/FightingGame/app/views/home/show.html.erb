@@ -1,1 +1,12 @@
-<h1>Home</h1>
+<% if current_user %>
+  <h1>Home</h1>
+  <%= current_user.id %>
+  <% if 0 == 0 %>
+    You do not currently have a hero.
+    <br>
+    <%= link_to "Create Hero", new_hero_path %>
+  <% else %>
+    Your hero:
+    ...
+  <% end %>
+<% end %>
