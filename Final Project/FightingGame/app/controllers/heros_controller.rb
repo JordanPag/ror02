@@ -15,7 +15,6 @@ class HerosController < ApplicationController
   # GET /heros/new
   def new
     @hero = Hero.new
-    @hero.user_id = current_user.id
   end
 
   # GET /heros/1/edit
@@ -70,6 +69,6 @@ class HerosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hero_params
-      params.require(:hero).permit(:name, :atk, :hp, :def, :speed, :class, :hero_id)
+      params.require(:hero).permit(:name, :atk, :hp, :def, :speed, :type, :user_id)
     end
 end

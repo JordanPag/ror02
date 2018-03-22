@@ -6,7 +6,7 @@ class CreateHeros < ActiveRecord::Migration[5.1]
       t.integer :hp
       t.integer :def
       t.integer :speed
-      t.string :class
+      t.string :type
       t.belongs_to :user, foreign_key: true
 
       t.timestamps

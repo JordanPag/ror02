@@ -6,7 +6,7 @@ one:
   hp: 1
   def: 1
   speed: 1
-  class: MyString
+  type: 
   user: one
 
 two:
@@ -15,5 +15,5 @@ two:
   hp: 1
   def: 1
   speed: 1
-  class: MyString
+  type: 
   user: two
