@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 20180322144707) do
     t.string "name"
     t.integer "atk"
     t.integer "hp"
-    t.integer "def"
+    t.integer "defense"
     t.integer "speed"
-    t.string "type"
+    t.string "kind"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

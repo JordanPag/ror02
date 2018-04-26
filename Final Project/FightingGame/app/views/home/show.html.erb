@@ -1,12 +1,43 @@
 <% if current_user %>
   <h1>Home</h1>
-  <%= current_user.id %>
-  <% if 0 == 0 %>
+  <% if current_user.heros.size == 0 %>
     You do not currently have a hero.
     <br>
     <%= link_to "Create Hero", new_hero_path %>
   <% else %>
     Your hero:
-    ...
+    <br>
+    <%
+    images = ["https://forums.terraria.org/index.php?attachments/elite-knight-png.27964/",
+      "http://2.bp.blogspot.com/-W5YWFyaZXl0/U_4xPYwNR8I/AAAAAAAAFr8/8Cl2ZJO4kH0/s1600/linknintendo.png",
+      "https://lh3.googleusercontent.com/-IWJ1ZzWYJJw/VVGIZlYeoeI/AAAAAAACRdw/4MRUWtjv77s/w256-h256/8bit_human_male_Barbarian_long_sword.gif",
+      "http://1.bp.blogspot.com/-bVEhlOCp48I/VYMCTw-xISI/AAAAAAAAP-4/f_LSmA8PT98/s640/clash-of-clans-giant-pixel-art.png",
+      "http://streak.club/img/dXBsb2Fkcy9pbWFnZS8yMjk2LmdpZg==/original/5bcuaa.gif"]
+    imgnum = 0
+    if current_user.heros[0].kind == "Human"
+      imgnum = 0
+    elsif current_user.heros[0].kind == "Elf"
+      imgnum = 1
+    elsif current_user.heros[0].kind == "Barbarian"
+      imgnum = 2
+    elsif current_user.heros[0].kind == "Giant"
+      imgnum = 3
+    elsif current_user.heros[0].kind == "Troll"
+      imgnum = 4
+    end
+    %>
+    <img style="float: right; margin-right: 50%; height: 200px" src="<%= images[imgnum] %>"></img>
+    <% hero = current_user.heros[0] %>
+    <h3><%= hero.name %></h3> <br>
+    Health: <%= hero.hp %> <br>
+    Attack: <%= hero.atk %> <br>
+    Defense: <%= hero.defense %> <br>
+    Speed: <%= hero.speed %> <br>
+    Class: <%= hero.kind %> <br>
+    <%= link_to 'Edit', edit_hero_path(hero) %> |
+    <%= link_to 'Delete Your Hero', hero, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <br>
+    <br>
+    <%= link_to 'Battle!', '/battle'%>
   <% end %>
 <% end %>

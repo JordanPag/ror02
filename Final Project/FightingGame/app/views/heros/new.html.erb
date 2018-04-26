@@ -1,5 +1,49 @@
 <h1>New Hero</h1>
 
-<%= render 'form', hero: @hero %>
+<ul>
+  <% for message in @hero.errors.full_messages %>
+  <font color="red"><li><%= message %></li></font>
+  <% end %>
+</ul>
+
+<%= form_for(@hero) do |form| %>
+  <p>
+      <%= form.label(:name) %><br>
+      <%= form.text_field(:name) %><br>
+    </p>
+    <br>
+    <h2>Stats</h2>
+    <h6>The sum of your hero's attack, defense, speed, and added health must be less than or equal to 300</h6>
+    <p>
+      <%= form.label(:attack) %><br>
+      <%= form.number_field(:atk, min: 0, max: 300) %><br>
+    </p>
+    <p>
+      <%= form.label(:health) %><br>
+      100 + <%= form.number_field(:hp, min: 0, max: 300) %><br>
+    </p>
+    <p>
+      <%= form.label(:defense) %><br>
+      <%= form.number_field(:defense, min: 0, max: 300) %><br>
+    </p>
+    <p>
+      <%= form.label(:speed) %><br>
+      <%= form.number_field(:speed, min: 0, max: 300) %><br>
+    </p>
+    <p>
+      <%= form.label(:class) %><br>
+      <%= form.select(:kind, "<option>Elf</option><option>Human</option><option>Troll</option><option>Giant</option><option>Barbarian</option>".html_safe) %><br>
+      Benefits from each class: <br>
+      Elf: Speed + 12 <br>
+      Troll: Defense + 12 <br>
+      Barbarian: Attack + 12 <br>
+      Giant: Health + 60 <br>
+      Human: Attack + 3, Speed + 3, Defense + 3, Health + 15 <br>
+    </p>
+    <%= form.hidden_field(:user_id) %>
+    <%= form.submit("Create Hero") %>
+<% end %>
+
+<br>
 
 <%= link_to 'Back', heros_path %>
