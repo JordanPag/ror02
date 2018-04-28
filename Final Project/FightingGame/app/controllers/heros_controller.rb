@@ -1,3 +1,17 @@
+def hit(attacker, receiver, hp)
+  if attacker[0] == nil
+    damage = attacker.atk.to_f * (1 - (receiver[3].to_f)/600)
+  else
+    damage = attacker[2].to_f * (1 - (receiver.defense.to_f)/600)
+  end
+  damage = damage.round
+  if hp - damage < 0
+    return 0
+  else
+    return hp - damage
+  end
+end
+
 class HerosController < ApplicationController
   before_action :set_hero, only: [:show, :edit, :update, :destroy]
 
@@ -99,7 +113,28 @@ class HerosController < ApplicationController
 
   # GET /battle
   def battle
-    @log = ""
+    @enemynum = rand(3)
+  end
+
+  # POST /battle
+  def attack
+    params.permit!
+    @enemynum = params[:enemynum].to_i
+    enemies = [["Bat", 100, 150, 50, 90, "https://i.pinimg.com/originals/b6/2b/d6/b62bd653a5ea86726d1b28b9cfc9916d.gif"],
+    ["Zombie", 200, 50, 140, 10, "https://vignette.wikia.nocookie.net/plantsvszombies/images/a/af/Bbzzzzz.png/revision/latest?cb=20150924172130"],
+    ["Ghost", 150, 100, 0, 150, "https://i.pinimg.com/originals/9d/e6/a7/9de6a7134d2a314489866b2561299488.png"]]
+    enemy = enemies[@enemynum]
+    hero = current_user.heros[0]
+    enemyhp = enemy[1]
+    herohp = hero.hp
+    # Enemy attrs: "Name", hp, atk, def, speed, "url"
+    if hero.speed > enemy[4]
+      enemyhp = hit(hero, enemy, enemyhp)
+      render plain: "Hero attacks first and enemy hp will be #{enemy[3]/600}"
+    else
+      herohp = hit(enemy, hero, herohp)
+      render plain: "#{enemy[0]} attacks first and hero hp will be #{herohp}"
+    end
   end
 
   private

@@ -1,10 +1,15 @@
 body {
-  background-color: #fff;
+  background: url("https://pre00.deviantart.net/344a/th/pre/f/2016/215/7/e/pixelated_dungeon_backgound_by_cakeeatergames-daciqit.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   color: #333;
   margin: 33px;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  color: white;
 }
 
 p, ol, ul, td {
@@ -73,7 +78,7 @@ label {
 button, input[type="submit"], a {
   color: #000;
   border: 2px solid red;
-  border-radius: 3px;
+  border-radius: 5px;
   background-color: #c0aaff;
   text-decoration: none;
 

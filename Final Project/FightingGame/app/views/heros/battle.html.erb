@@ -24,24 +24,23 @@ elsif current_user.heros[0].kind == "Troll"
 end
 # "Name", hp, atk, def, speed, url
 enemies = [["Bat", 100, 150, 50, 90, "https://i.pinimg.com/originals/b6/2b/d6/b62bd653a5ea86726d1b28b9cfc9916d.gif"],
-["Zombie", 200, 50, 140, 10, "https://i.pinimg.com/originals/70/77/43/70774367796d7323c0523b7bccdb1ad7.jpg"],
-["Ghost", 150, 100, 0, 150, "https://s2.favim.com/610/151116/ghost-halloween-pixel-pixelated-Favim.com-3580942.jpg"]]
-enemynum = rand(3)
+["Zombie", 200, 50, 140, 10, "https://vignette.wikia.nocookie.net/plantsvszombies/images/a/af/Bbzzzzz.png/revision/latest?cb=20150924172130"],
+["Ghost", 150, 100, 0, 150, "https://i.pinimg.com/originals/9d/e6/a7/9de6a7134d2a314489866b2561299488.png"]]
 %>
 <%= link_to "Back", "/" %>
 <br>
 <br>
 <img height="200px" src="<%= images[imgnum] %>"></img>
-<img height="200px" src="<%= enemies[enemynum][5] %>" style="float: right;"></img>
+<img height="200px" src="<%= enemies[@enemynum][5] %>" style="float: right;"></img>
 <br>
 <p style="text-align: center;">VS</p>
-<b><%= current_user.heros[0].name %></b> <b style="float: right;"><%= enemies[enemynum][0] %></b> <br>
-<span>Health: <%= current_user.heros[0].hp %></span> <span style="float: right;">Health: <%= enemies[enemynum][1] %></span> <br>
-<span>Attack: <%= current_user.heros[0].atk %></span> <span style="float: right;">Attack: <%= enemies[enemynum][2] %></span> <br>
-<span>Defense: <%= current_user.heros[0].defense %></span> <span style="float: right;">Defense: <%= enemies[enemynum][3] %></span> <br>
-<span>Speed: <%= current_user.heros[0].speed %></span> <span style="float: right;">Speed: <%= enemies[enemynum][4] %></span> <br>
+<b><%= current_user.heros[0].name %></b> <b style="float: right;"><%= enemies[@enemynum][0] %></b> <br>
+<span>Health: <%= current_user.heros[0].hp %></span> <span style="float: right;">Health: <%= enemies[@enemynum][1] %></span> <br>
+<span>Attack: <%= current_user.heros[0].atk %></span> <span style="float: right;">Attack: <%= enemies[@enemynum][2] %></span> <br>
+<span>Defense: <%= current_user.heros[0].defense %></span> <span style="float: right;">Defense: <%= enemies[@enemynum][3] %></span> <br>
+<span>Speed: <%= current_user.heros[0].speed %></span> <span style="float: right;">Speed: <%= enemies[@enemynum][4] %></span> <br>
 <br>
-<button onclick="log = attack(<%= @log %>, <%= current_user.heros[0] %>, <%= "yo"%>); location.reload();">Attack!</button>
+<%= button_to "Attack!", :enemynum => @enemynum %>
 <br>
 <h2>Battle Log</h2>
-<p><%= @log %></p>
+<p id="notice"><%= notice %></p>

@@ -14,14 +14,13 @@
         Signed in as <strong><%= current_user.name %></strong>
         <%= link_to "Sign out", signout_path, id: "sign_out" %>
       <% else %>
-        <a id="sign_in" href="/auth/google_oauth2"><img src="http://www.setyourowntests.com/_/rsrc/1468869481521/help/accounts/btn_google_signin_dark_normal_web%402x.png" width="200"></img></a>
       <% end %>
     </div>
     <div>
       <% if current_user %>
         <%= yield %>
       <% else %>
-        <h3>Please sign in to use the game.</h3>
+        <a style="position:fixed; left: 50%; margin-left: -200px; top: 50%; margin-top: -49.735px;" id="sign_in" href="/auth/google_oauth2"><img src="http://www.setyourowntests.com/_/rsrc/1468869481521/help/accounts/btn_google_signin_dark_normal_web%402x.png" width="400"></img></a>
       <% end %>
     </div>
   </body>
